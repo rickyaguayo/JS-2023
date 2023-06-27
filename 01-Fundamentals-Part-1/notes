@@ -1,4 +1,161 @@
-JavaScript is a high level, object oriented, multi paradigm programming language
-- high level - dont have to worry about complex things like memory allocation
-- object oriented - based on objects for storing most kinds of data
-- multi paradigm - can use different styles of programming
+HTML + CSS + JS = Noun + Verb + Adjective
+HTML = what is on the page
+CSS = what it looks like
+JS = what it does
+
+Modern JS frameworks/libraries
+Ex: React, Angular, Vue
+- make building large scale apps easier/faster
+- all 100% based on JS
+
+JS and web browser are 2 different things
+- JS can be used outside of the web browser
+- JS can be used on a web server. Ex: node.js
+  - helps us build back end apps
+    - runs on web server
+    - interacts with databases
+- JS on the browser are front end apps
+
+JS Native mobile/desktop apps
+- uses native components instead of web components as building blocks
+- Mobile: React Native, Ionic
+- Desktop: Electron
+
+ES6
+- stands for ECMAScript
+- came out in 2015. Biggest update for JS ever
+
+Naming
+- variable cannot start with a number
+  - Ex: 3years will throw error in the console
+- variables can only contain numbers, letters, _ or $
+- cannot be the same as reserved keywords
+  - Ex: function, new
+  - can be worked around by adding $ or _ before it. $function
+  - 'name' is allowed but advised against. Use things like firstName, etc
+- do not start var/let/const names with uppercase letter 
+- all caps variable names are reserved for variables that never change
+  - Ex: let PI = 3.1415; 
+- be specific with your variable names. myFirstJob vs job1. the first one is better because it is more specific
+
+Data Types
+ - every value is either an object or a primitive
+  - a primitive is everything but an object
+  - primitives are immutable
+ - 7 Primitive Data Types
+    1. Number
+    2. Strings - sequence of characters. wrapped in single or double quotes
+    3. Boolean - true or false value
+    4. undefined - value taken by a variable that is not defined. empty value
+    5. null - also empty value
+    6. Symbol - value that is unique and cannot be changed
+    7. BigInt - larger integers that the number type cant hold
+- dynamic typing - in js, you dont have to manually define the data type of the value within a variable. Data types are auto determined
+- value has the type, not the variable
+- empty variables hold undefined type/value
+
+Declaring variables
+- let, const, var
+- var is older. let and const are used more post ES6
+- const cannot be changed. immutable. also requires initial value. cannot be defined without value like let.
+- const is recommended most of the time.
+
+Operators 
+- ** = power of. Ex: 2 ** 3 is 2 to the power of 3. 8
+- +=, -=, *=, /= takes operateor and includes it into already defined variable.
+  - Ex: x = 10;
+        x += 5; translates to x = x + 5. equals 15
+        x++ is x = x + 1
+        x-- is x = x - 1
+- js has a order of operations. (order precedence)
+
+Template literals
+- can assemble multiple pieces into one string
+- allows you to write in a normal way then injects variable to create a string
+- defined by back ticks (``) and variable are defined using ${}. Ex: `my name is ${firstName}`
+- back ticks (``) can also be used for strings along with single/double quotes
+- can be used for multi line strings
+  - Ex: `multi
+        line  
+        sting` will output as shown
+  - used to have to use /n/ within quotes.
+  - helpful for writing HTML in js
+- expressions can be used within template literals, statements cannot
+
+Control structure - if/else statements
+  - allows control on how code is executed
+  - if/else can be used in one line. (line 77)
+
+Type Conversion -  manually convert from one type to another
+  - JS can only convert to a number, to a string or to a Boolean
+    - Number()
+    - String()
+    - Boolean()
+
+Type Coercion - when js automatically convert types
+  - Plus (+) operator can convert numbers to strings
+    - Ex: console.log("I'm " + 29 + " years old")
+      = "I'm 29 years old"
+    - 29 turns into "29"
+
+  - Minus (-), multiply (*), and divide (/) operators can convert string to number
+    - Ex: console.log("23" - "10" - 3)
+      = 10
+    - "23" - "10" turns into 23 - 10
+    - "23" * "2" = 46
+    - "23" / "2" = 11.5
+
+Truthy vs Falsy
+- Falsy - values that arent actually false, but will become false when converted to boolean
+  - JS has 5 falsy values:
+    1. 0
+    2. '' (empty string)
+    3. undefined
+    4. null
+    5. NaN
+
+- Truthy - values that arent actually true, but will become true when converted to boolean
+  Ex: any number that isnt 0, a string that isnt empty
+
+- In conditional statements, js will try to convert the logic into boolean. (script.js line 60)
+
+- Equal operators (script.js line 76)
+  - === - strict quality operator. does not perform type coercion. returns boolean
+  Ex: 18 === 18 = true. 19 === '19' = false. 19 === 18 = false
+   opposite is !==
+  - == - loose quality operator. does perform type coercion. returns boolean 
+  Ex: 18 == 18 = true. 19 == '19' = true. 19 == 18 = false
+    - avoid using loose operator as much as possible
+    - opposite is !=
+
+- prompt() - opens up alert with input on page load and creates value (as a string) from input
+
+- and (&&) operator - true when all are true. "Sarah has a license and good vision"
+- or (||) operator - true when one is true. "Sarah has a license or good vision"
+- not (!) operator - inverts true to false and vis versa. 
+  - this has precedence over and/or operators. 
+  - not will invert the boolean before running any and/or operators that may be along with it
+  Ex: a = false, b = true
+      !a && b = true 
+
+Switch statements (script.js line 115)
+- a different way of running if/else statements
+- uses strict operators when running
+- the same logic can be run for two different cases
+- can also set a default in case all other cases fail
+- not used as much anymore 
+
+- Expression is a piece of code that outputs a value
+  - Ex: 3 + 4, 1992, true && false && !false, any operator
+- Statements are bigger piece of code that performs actions but does not output a value
+  - Ex: if/else statements, switch statements
+  - statements will end in a semicolon a lot of the time
+- Statements are like full sentences, expressions are the words that make up the sentences
+
+Conditional (ternary) operator (script.js line 153)
+- 3 part operator separated by ? and :
+  - 3 parts: condition (before ?), if (between ? and :), else (after :)
+- can be stored into a variable
+  - this makes it easier than if/else. with if/else, you have to declare the variable outside the statement first
+- can be used in a template literal, unlike if/else because ternary operators are expressions. if/else are statements. statements cannot go in template literals
+- not necessarily a replacement for if/else, but there are good places where these come in handy

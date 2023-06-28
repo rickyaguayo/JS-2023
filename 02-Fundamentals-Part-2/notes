@@ -1,0 +1,85 @@
+strict mode
+- written at the top of js file. 'use strict';
+- helps make the js cleaner and secure code
+- helps devs avoid bugs
+- forbids certain actions
+- makes errors visible
+- adds reserved words that will throw errors if you try to use them (Ex: interface, private, etc)
+
+Functions -
+- input data -> transform data -> output data
+- allows us to create reusable code 
+- names and parameters optional
+- can only be ran when called/ran/invoked. logger();
+- return helps produce the result of the function so that it can be used elsewhere in the code. return is optional
+- return causes you to jump out of function
+- functions are values. can be stored in variables
+
+- function declarations (script.js line 10) use function keyword to declare a function (like variables)
+  - these can be called before the function is declared in the code (hoisting)
+
+- function expression (script.js line 30) is a function value stored in a variable
+  - this usually is an anonymous(without a name) function stored in a variable
+  - cannot be called before the function in the code. (hoisting)
+
+- arrow functions (script.js line 38)
+  - short hand for function expressions
+  - return is implicit in arrow functions. but if there is more than one line of code, you will need to put return
+  - curly braces are optional depending on length of code block within function 
+  - helpful for writing short one line functions. (dont need return here)
+  - arrow functions do not get the 'this' keyword.
+
+Arrays (line 87)
+- zero based.
+- call items in array with []
+- can mutate arrays within const variable
+- can hold different kinds of data types
+- can use function calls within array
+- use for more ordered data
+
+- Methods - functions used to mutate arrays (line 117)
+  - .push() - adds item to END of array. returns length of array. shorthand is friends[3]. assuming 3 would be the last index if once value is added
+  - .unshift() - adds item to BEGINNING of array. returns length of array
+  - .pop() - removes LAST item in array. returns item removed
+  - .shift() - removes FIRST item in array. returns item removed
+  - .length() - calculates how many values inside of an array. not zero based
+  - .indexOf() - returns the index of specified value. -1 is returned when value is not present in the array
+  - .includes() - returns true or false. sees whether value is inside the array. uses strict equality operator
+
+Objects - key value pairing (line 134)
+- first value is key, second is the value.
+- key is also called a property.
+- object literal syntax is defining an object with curly braces
+- used for more unstructured data
+- any function that is attached to an object is called a method
+- function inside an object must be an expression not a declaration
+
+- dot notation. operator that calls a certain property from an object. 
+ricky.job = 'developer'
+- bracket notation allows you to add an expression 
+  - useful when something needs to be computed before running
+
+Loops - (line 210)
+- controlled structure
+- automates repetitive ta sks
+- continue - exit the current iteration and continue to the next
+- break - jumps out of loop completely
+
+- For Loops
+  - keeps running while condition is true
+  - has 3 parts to the beginning 
+    1. counter - the variable that is the starting point
+    2. logical condition that is evaluated before each iteration of the loop 
+    3. how the counter is modified after each iteration
+
+- While Loops (line 276)
+  - can only use the condition
+  - still needs the counter and the increment, but needs to be explicitly defined outside the loop
+  - this allows more versatility than a for loop
+  - helpful when we dont know how many times the loops needs to be run
+
+- Math.random() gives random number between 0 and 1. can be 0 but never will be 1. Ex: .984223
+- Math.trunc() cuts off any decimal or fraction. (no rounding) 4.875 -> 4
+- Math.floor() rounds down any number 5.983 -> 5
+- Math.ceil() rounds up any number 9.07 -> 10
+- Math.round() rounds to the nearest integer 5.75 -> 6, 5.25 -> 5

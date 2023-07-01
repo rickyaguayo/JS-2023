@@ -4,7 +4,7 @@ strict mode
 - helps devs avoid bugs
 - forbids certain actions
 - makes errors visible
-- adds reserved words that will throw errors if you try to use them
+- adds reserved words that will throw errors if you try to use them (Ex: interface, private, etc)
 
 Functions -
 - input data -> transform data -> output data
@@ -27,7 +27,7 @@ Functions -
   - return is implicit in arrow functions. but if there is more than one line of code, you will need to put return
   - curly braces are optional depending on length of code block within function 
   - helpful for writing short one line functions. (dont need return here)
-  - arrow functions do not get the this keyword.
+  - arrow functions do not get the 'this' keyword.
 
 Arrays (line 87)
 - zero based.

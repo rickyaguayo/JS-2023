@@ -40,7 +40,7 @@ let js = "amazing";
 //   console.log("not a valid day cuh");
 // }
 
-let age = 30;
-const drink = age > 21 ? "I like beer" : "aw man just water";
+// let age = 30;
+// const drink = age > 21 ? "I like beer" : "aw man just water";
 
-console.log(`${drink}`);
+// console.log(`${drink}`);

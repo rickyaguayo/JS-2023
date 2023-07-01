@@ -80,3 +80,66 @@
 // };
 
 // console.log(1992, "Ricky");
+
+//ARRAYS
+// const friends = ["Mike", "Steve", "Pete"];
+// console.log(friends);
+
+// const years = new Array(1991, 1992, 1996);
+
+// console.log(friends[0]);
+// console.log(friends[2]);
+
+// console.log(friends.length);
+// console.log(friends[friends.length - 1]);
+
+// friends[2] = "Jay";
+// console.log(friends);
+
+// const firstName = "Ricky";
+// const ricky = [firstName, "Aguayo", 2037 - 1992, friends];
+// console.log(ricky);
+
+// const calcAge = function (birthYear) {
+//   return 2037 - birthYear;
+// };
+
+// const years = [1990, 1967, 2002, 2010, 2018];
+
+// const age1 = years[0];
+// const age2 = years[1];
+// const age3 = years[years.length - 1];
+
+// console.log(calcAge(age1), calcAge(age2), calcAge(age3));
+
+// const ages = [calcAge(age1), calcAge(age2), calcAge(age3)];
+// console.log(ages);
+
+//ARRAY METHODS
+
+//.push() ADDS VALUE TO END OF ARRAY
+const friends = ["Mike", "Steve", "Pete"];
+const newLength = friends.push("Jay");
+console.log(friends);
+console.log(newLength); //returns array length
+
+//.unshift() ADDS VALUE TO BEGINNING OF ARRAY
+friends.unshift("John");
+console.log(friends);
+
+//.pop() REMOVES LAST ELEMENT OF ARRAY
+const popped = friends.pop();
+console.log(friends);
+console.log(popped); //returns popped value
+
+//.shift() REMOVES FIRST ELEMENT OF ARRAY
+friends.shift();
+console.log(friends);
+
+//.indexOf() RETURNS POSITION OF VALUE
+console.log(friends.indexOf("Pete"));
+console.log(friends.indexOf("Bob")); // (returns -1 if value doesnt exist)
+
+// .includes() RETURNS BOOLEAN
+console.log(friends.includes("Steve"));
+console.log(friends.includes("Bob"));

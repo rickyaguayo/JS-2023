@@ -42,7 +42,7 @@ Arrays (line 87)
   - .unshift() - adds item to BEGINNING of array. returns length of array
   - .pop() - removes LAST item in array. returns item removed
   - .shift() - removes FIRST item in array. returns item removed
-  - .length() - calculates how many values inside of an array. not zero based
+  - .length - calculates how many values inside of an array. not zero based
   - .indexOf() - returns the index of specified value. -1 is returned when value is not present in the array
   - .includes() - returns true or false. sees whether value is inside the array. uses strict equality operator
 

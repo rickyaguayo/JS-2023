@@ -62,21 +62,21 @@
 
 // console.log(foodProcessor(2, 3));
 
-const calcAge = function (birthYear) {
-  return 2037 - birthYear;
-};
+// const calcAge = function (birthYear) {
+//   return 2037 - birthYear;
+// };
 
-const yearsUntilRetirement = function (birthYear, firstName) {
-  const age = calcAge(birthYear);
-  const retirement = 65 - age;
+// const yearsUntilRetirement = function (birthYear, firstName) {
+//   const age = calcAge(birthYear);
+//   const retirement = 65 - age;
 
-  if (retirement > 0) {
-    return retirement;
-  } else {
-    return -1;
-  }
+//   if (retirement > 0) {
+//     return retirement;
+//   } else {
+//     return -1;
+//   }
 
-  // return `${firstName} retires in ${retirement} years`;
-};
+// return `${firstName} retires in ${retirement} years`;
+// };
 
-console.log(1992, "Ricky");
+// console.log(1992, "Ricky");

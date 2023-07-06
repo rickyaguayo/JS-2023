@@ -1,3 +1,5 @@
+/////////FUNCTIONS/////////
+
 // function logger() {
 //   console.log("sup");
 // }
@@ -81,7 +83,8 @@
 
 // console.log(1992, "Ricky");
 
-//ARRAYS
+///////////ARRAYS////////////
+
 // const friends = ["Mike", "Steve", "Pete"];
 // console.log(friends);
 
@@ -118,28 +121,113 @@
 //ARRAY METHODS
 
 //.push() ADDS VALUE TO END OF ARRAY
-const friends = ["Mike", "Steve", "Pete"];
-const newLength = friends.push("Jay");
-console.log(friends);
-console.log(newLength); //returns array length
+// const friends = ["Mike", "Steve", "Pete"];
+// const newLength = friends.push("Jay");
+// console.log(friends);
+// console.log(newLength); //returns array length
 
 //.unshift() ADDS VALUE TO BEGINNING OF ARRAY
-friends.unshift("John");
-console.log(friends);
+// friends.unshift("John");
+// console.log(friends);
 
 //.pop() REMOVES LAST ELEMENT OF ARRAY
-const popped = friends.pop();
-console.log(friends);
-console.log(popped); //returns popped value
+// const popped = friends.pop();
+// console.log(friends);
+// console.log(popped); //returns popped value
 
 //.shift() REMOVES FIRST ELEMENT OF ARRAY
-friends.shift();
-console.log(friends);
+// friends.shift();
+// console.log(friends);
 
 //.indexOf() RETURNS POSITION OF VALUE
-console.log(friends.indexOf("Pete"));
-console.log(friends.indexOf("Bob")); // (returns -1 if value doesnt exist)
+// console.log(friends.indexOf("Pete"));
+// console.log(friends.indexOf("Bob")); // (returns -1 if value doesnt exist)
 
 // .includes() RETURNS BOOLEAN
-console.log(friends.includes("Steve"));
-console.log(friends.includes("Bob"));
+// console.log(friends.includes("Steve"));
+// console.log(friends.includes("Bob"));
+
+//////////OBJECTS////////////
+// const ricky = {
+//   firstName: "Ricky",
+//   lastName: "Aguayo",
+//   age: 2023 - 1992,
+//   job: "lazy ass mofo",
+//   friends: ["Michael", "Peter", "Steven"],
+// };
+
+// console.log(ricky.lastName);
+// console.log(ricky["lastName"]);
+
+// const nameKey = "Name";
+// console.log(ricky["first" + nameKey]); //bracket notation can be used with expressions
+// console.log(ricky["last" + nameKey]);
+
+// const interestedIn = prompt("firstName, lastName, age, job, friends?");
+
+// if (ricky[interestedIn]) {
+//   console.log(ricky[interestedIn]);
+// } else {
+//   console.log("Wrong request u dum bitch");
+// }
+
+// Adding to an object
+// ricky.location = `Colorado`;
+// ricky["twitter"] = `N/A`;
+// console.log(ricky);
+
+// const challenge =
+//   ricky.firstName +
+//   " has " +
+//   ricky.friends.length +
+//   " friends, and his best friend is called " +
+//   ricky.friends[0];
+
+// console.log(challenge);
+
+const ricky = {
+  firstName: "Ricky",
+  lastName: "Aguayo",
+  birthYear: 1992,
+  job: "lazy ass mofo",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  // calcAge: function (birthYear) {
+  //   return 2037 - birthYear;
+  // },
+
+  // calcAge: function () {
+  //   return 2037 - this.birthYear;
+  // },
+
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    this.calcAge();
+    const DL = this.hasDriversLicense ? "has" : "has no";
+    const challenge =
+      this.firstName +
+      " is a " +
+      this.age +
+      "-year old " +
+      this.job +
+      ", and he " +
+      DL +
+      " drivers license";
+    return challenge;
+  },
+};
+
+// console.log(ricky.calcAge());
+
+// const challenge = `${
+//   ricky.firstName
+// } is a ${ricky.calcAge()}-year old, and he ${
+//   ricky.hasDriversLicense ? "has" : "has no"
+// } drivers license`;
+
+console.log(ricky.getSummary());

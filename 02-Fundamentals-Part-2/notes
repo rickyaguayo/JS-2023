@@ -50,7 +50,7 @@ Objects - key value pairing (line 134)
 - first value is key, second is the value.
 - key is also called a property.
 - object literal syntax is defining an object with curly braces
-- used for more unstructured data
+- used for more unstructured data. more structured date should be saved for arrays
 - any function that is attached to an object is called a method
 - function inside an object must be an expression not a declaration
 

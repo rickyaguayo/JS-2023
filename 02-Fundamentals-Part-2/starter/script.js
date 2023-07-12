@@ -185,42 +185,42 @@
 
 // console.log(challenge);
 
-const ricky = {
-  firstName: "Ricky",
-  lastName: "Aguayo",
-  birthYear: 1992,
-  job: "lazy ass mofo",
-  friends: ["Michael", "Peter", "Steven"],
-  hasDriversLicense: true,
+// const ricky = {
+//   firstName: "Ricky",
+//   lastName: "Aguayo",
+//   birthYear: 1992,
+//   job: "lazy ass mofo",
+//   friends: ["Michael", "Peter", "Steven"],
+//   hasDriversLicense: true,
 
-  // calcAge: function (birthYear) {
-  //   return 2037 - birthYear;
-  // },
+//   // calcAge: function (birthYear) {
+//   //   return 2037 - birthYear;
+//   // },
 
-  // calcAge: function () {
-  //   return 2037 - this.birthYear;
-  // },
+//   // calcAge: function () {
+//   //   return 2037 - this.birthYear;
+//   // },
 
-  calcAge: function () {
-    this.age = 2037 - this.birthYear;
-    return this.age;
-  },
+//   calcAge: function () {
+//     this.age = 2037 - this.birthYear;
+//     return this.age;
+//   },
 
-  getSummary: function () {
-    this.calcAge();
-    const DL = this.hasDriversLicense ? "has" : "has no";
-    const challenge =
-      this.firstName +
-      " is a " +
-      this.age +
-      "-year old " +
-      this.job +
-      ", and he " +
-      DL +
-      " drivers license";
-    return challenge;
-  },
-};
+//   getSummary: function () {
+//     this.calcAge();
+//     const DL = this.hasDriversLicense ? "has" : "has no";
+//     const challenge =
+//       this.firstName +
+//       " is a " +
+//       this.age +
+//       "-year old " +
+//       this.job +
+//       ", and he " +
+//       DL +
+//       " drivers license";
+//     return challenge;
+//   },
+// };
 
 // console.log(ricky.calcAge());
 
@@ -230,4 +230,77 @@ const ricky = {
 //   ricky.hasDriversLicense ? "has" : "has no"
 // } drivers license`;
 
-console.log(ricky.getSummary());
+// console.log(ricky.getSummary());
+
+///////LOOPS/////////
+
+//FOR LOOP
+// for (let rep = 1; rep <= 10; rep++) {
+//   console.log(`Lifting weights rep ${rep}`);
+// }
+
+// const rickyArray = [
+//   "Ricky",
+//   "Aguayo",
+//   1992,
+//   "lazy ass mofo",
+//   ["Michael", "Peter", "Steven"],
+// ];
+
+// const types = [];
+
+// for (let i = 0; i < rickyArray.length; i++) {
+//   console.log(rickyArray[i]);
+
+//   types[i] = typeof rickyArray[i];
+// }
+
+// console.log(types);
+
+// const years = [1992, 2010, 1984, 2027];
+// const ages = [];
+
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+
+// console.log(ages);
+
+// for (let i = rickyArray.length - 1; i > -1; i--) {
+//   console.log(rickyArray[i]);
+// }
+
+// for (let i = 1; i <= 3; i++) {
+//   console.log(`---starting exercise ${i}---`);
+//   for (let j = 1; j <= 5; j++) {
+//     console.log(`exercise ${i} rep ${j}`);
+//   }
+// }
+
+//CONTINUE AND BREAK
+// for (let i = 0; i < rickyArray.length; i++) {
+//   if (typeof rickyArray[i] !== "string") continue;
+
+//   console.log(rickyArray[i], typeof rickyArray[i]);
+// }
+
+// for (let i = 0; i < rickyArray.length; i++) {
+//   if (typeof rickyArray[i] === "number") break;
+
+//   console.log(rickyArray[i], typeof rickyArray[i]);
+// }
+
+//WHILE LOOP
+
+// let rep = 1;
+// while (rep <= 10) {
+//   console.log(`Lifting weights rep ${rep}`);
+//   rep++;
+// }
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+  console.log(`you rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+}

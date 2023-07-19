@@ -1,0 +1,36 @@
+Goals -
+
+- specific, measurable, and time based
+- find your why
+- imagine a big project that you can work towards
+- keep learning
+- push through obstacles
+- keep going! no matter what
+
+Solving Problems -
+
+- stay calm and slow down
+  - dont attack the problem without a plan
+- take a logical and rational approach
+- 4 step process:
+
+  1. make sure you understand the problem
+
+  - ask the right questions about it
+
+  2. Divide and conquer
+
+  - break big problems into smaller sub problems
+
+  3. Don't be afraid to do research
+
+  - this is part of being a developer.
+
+  4. write psuedo code before writing actual code
+
+  Other console functions -
+  console.warn() - shows warning in console
+  console.error() - shows error in console
+  console.table() - formats objects into nice formatted table in console
+
+  add debugger; in code to add breakpoint

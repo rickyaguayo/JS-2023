@@ -1,0 +1,23 @@
+- these kinds of methods ARE NOT js. they are web APIs that can interact with JS
+.querySelector() - selects a class within HTML. requires quotes and identifier. (. for class, # for id.)
+  - Ex: document.querySelector('.elementName') document.querySelector('#elementName')
+.textContent - displays text within selected element
+.value - gets value from HTML element
+.addEventListener(type, listener) - listens for events and reacts (with a function) when event appears
+  Ex: .addEventListener('click', fucntion(){
+    do stuff
+  });
+  - click is what the event listener is looking for. 
+  - can be other things like mouse movement, scroll, etc
+  - does not need to be called. the JS engine will run the function attached to the event listener when the event happens
+.style - changes CSS
+  Ex: document.querySelector('.class').style.backgroundColor = 'green';
+  - css attributes that have more than one word should be camel case.
+  - the value should be a string (within quotes)
+
+DOM - Document Object Model
+- connection between JS and HTML docs
+- allows js to access HTML elements/styles and manipulate them
+
+state - all the data that is relevant to the application 
+

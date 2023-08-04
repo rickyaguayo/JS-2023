@@ -2,7 +2,7 @@
 .querySelector() - selects a class within HTML. requires quotes and identifier. (. for class, # for id.)
   - Ex: document.querySelector('.elementName') document.querySelector('#elementName')
 .textContent - displays text within selected element
-.value - gets value from HTML element
+.value - gets value from HTML input
 .addEventListener(type, listener) - listens for events and reacts (with a function) when event appears
   Ex: .addEventListener('click', fucntion(){
     do stuff

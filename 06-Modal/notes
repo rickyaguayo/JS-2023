@@ -1,0 +1,12 @@
+if using .querySelector on a class that is repeated in other elements, only the first will be selected.
+
+Ex: <button class="btn">Button 1</button>
+<button class="btn">Button 2</button>
+<button class="btn">Button 3</button>
+
+document.querySelector('.btn') will only select "Button 1"
+instead, use querySelectorAll. returns node list
+
+creating a loop for a list can allow you to add event listeners to each instance of the loop
+
+keyboard events generate objects that can be drilled into to retrieve information. ie: which key was pressed

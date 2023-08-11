@@ -1,0 +1,170 @@
+Javascript -
+
+- High level - developer does not have to worry about resources like memory. JS does it for us unlike languages like C that where you have to manage them manually
+- Garbage-collected - algorithm within JS that automatically removes old, unused objects from the computer memory.
+- Interpreted or just in time compiled - we write easy to read code, but it needs to be compiled to machine code (1s and 0s). happens inside the JS engine
+- Multi-paradigm -
+  - Paradigm - approach and mindset of structuring code. Directs coding style/technique. JS has 3.
+    1. Procedural programming - organzing code in a linear way with a few functions in between
+    2. Object Oriented Programming (OOP)
+    3. Functional Programming (FP)
+  - Imperative vs Declarative
+    - Imperative - tells computer how to do things. Procedural and OOP
+      - deals with statements (tells the computer to do something)
+      - defining variables and changing their values
+    - Declarative - what you want from the computer (what to do). includes FP
+      - deals with expressions (evalutes code to a value)
+      - Evaluate results based on inputs
+- Prototype-based object-oriented - most objects have a prototype that is a blueprint for objects that we use. these blueprints have methods that can be used when declaring a certain object. Like .push() for an array. Any object that we create inherits these properties so that we can use them ourselves (protypical inheritance)
+- First-class functions - functions are treated as variables. can be passed into other functions or returned from other functions.
+- Dynamic - no need to define types. they become known at runtime. can also be changed automatically
+- Single-threaded - can only do one thing at a time
+  - concurrency model - how JS engine handles multiple tasks happening at the same time
+  - thread - set of instructions that is executed in the computers CPU
+    - where the code is executed in the machines processor
+- Non-blocking event loop - takes long running tasks, executes them in the background and puts them back in the main thread once they are finished
+  - this helps with long running tasks like fetching data
+
+JS Engine - program that executes js code
+
+- most common is V8 Engine. powers google chrome and node.js
+- JS Engine has 2 parts:
+  1. Call stack - where the code is executed using execution contexts
+  2. Heap - unstructured memory pool that stores objects that an application needs
+- 3 steps:
+  - parsing - parses through code and saved into an Abstract Syntax Tree (AST)
+    - This saves certain pieces of code (const, functions, etc) in a structured tree of information pertaining to the saved code
+    - This is passed down to the Compilation step
+  - Compilation - compiles AST into machine code
+  - Execution - happens in JS Engine call stack. Is executed immediately after compilation
+  - Some engines have a bonus step:
+    - Optimization - machine code is first unoptimized to get the code executed ASAP. then it is optimized, recompiled and reexecuted. Can happen multiple times. Helps engines be very fast.
+
+Compilation vs Interpretation
+
+- Compilation - entire code is converted into machine code at once and written to a binary (poratble) file that can be executed by any computer
+- 2 steps:
+  - source code is compiled to machince code
+  - machine code is executed in CPU and ran (can happen way after compilation)
+- Interpretation - interpreter runs through the source code and executes it line by line
+  - Only 1 step:
+    - source code -> run program. read and executed all at the same time
+    - converts to machine code right before execution. not ahead of time
+    - much slower. JS was like this but is no longer
+- Just-in-time (JIT) compilation - a combination of Compilation and Interpretation.
+  - Entire code is converted into machince code at once. then executed immediately.
+  - still takes the 2 steps of compilation, but it isnt stored in a portable file and is executed immediately after compilation
+
+JS Runtime - container including all the things that we need to use JS (Ex: a browser)
+
+- In the browser:
+  - JS Engine - heart of any JS runtime. with no engine, there is no runtime or JS at all
+  - Web APIs - functionalities provided to the engine.
+  - not part of JS, but gets access to the APIs through global window object
+  - Ex: DOM, timers, console.log, etc
+  - Callback queue - data structure that contains all callback functions that are ready to be executed
+  - Ex: event listener
+    - when a callback function is called from the callback queue, it is passed to the call stack so that it can be executed. (event loop)
+
+Execution Context (EC) - environment in which a piece of JS is executed. Stores all the necessary info for some code to be executed (variable environment, arguments, scope chain)
+- JS code always runs inside an execution context
+
+- Steps for Execution:
+
+1. creation of global execution context. the first code that is executed is top level code (code that is available globally. not inside of a function. function names will be declared, but the body of the function will only be executed when its called)
+
+   - there is only ever one global execution context, no matter how big the project
+
+2. execution of top level code inside global EC
+3. Execution of function and waiting for callbacks.
+
+   - 1 EC per function. for each function call, a new execution context is created
+   - all of these together make up the call stack
+
+- Inside an execution context:
+  - variable environment - all variable declarations, function declarations and argument objects (contains all arguments for functions)
+  - scope chain - a reference to all variables located outside of the current function. stored within each EC.
+  - this keyword
+- these are generated during creation phase, right before execution
+- arrow functions, however, do not get an argument object or a this keyword. Borrow the arg object and this keyword from its closest regular function parent
+
+Call Stack - place where ECs get stacked on top of each other to keep track of where we are in the execution
+- when a new EC is placed on top, the previous is paused. this is because JS only had a single thread for execution and can only run through one EC at a time
+- returns pop the function's EC off the call stack and return to the previously executed EC in the call stack (this helps with callbacks)
+
+Scoping - how our program's variables are organized and accessed by the JS engine
+- where do vairables live? where can we access a certain varibale and where not?
+
+- Lexical Scoping - refers to its placement in which it's created. This gives its access to the variables from the parent scope
+ 
+- Scope - environment in which a certain variable is declared
+  - global scope - variables that are declared outside of any function or block. accessible everywhere. top level code
+  - function (local) scope - variables that live in a function. not accessible outside the function
+  - block scope - variables are accessible only inside of a block of code (anything within curly braces like if statements)
+    - only applies to let and const variables. var is function scoped
+    - functions are also block scoped (in strict mode)
+  - if 2 variable have the same name, the one that is closest in terms of scope and vaiable lookup will be chosen
+
+- Scope chain - every scope always has access to all the variables from all its outer scopes
+  - nested functions have access to the parent variables
+  - non-nested functions have access to global scope. which in turn give nested functions access to the global scope as well
+    - also applies to arguments
+  - variable lookup - when child scope look up to parent and global scope for a variable. its not a copy, simply borrowing the variable if its in scope
+  - does not work the other way around or between siblings. scope can only look up, not down to child scopes or sideways
+  - has nothing to do with order in which functions are called
+  - one difference between let and const (ES6) and var (pre-ES6) is scoping. let and const are block scoped. var is function scoped
+    - if var is declared inside an if statement (or any other block except functions), that var can be used outside of the if block it was created in because var is only function scoped and not block scoped
+  - another difference is that let/const do not create properties on the global 'window' object
+
+- scope chain has nothing to do with the order functions are CALLED. just where functions are written
+- call stack deals with the order functions are called.
+
+Hoisting - makes some types of variables accessible/usable in the code before they are declared
+- before execution, code is scanned for variable declarations, and for each variable, a new property is created in the variable environment object. Which is created with every execution context.
+- used so that functions can be used before declared (works with recursion)
+- var hoisting is a byproduct of this. which is why let/const were created
+- hoisting can cause problems because it allows you to use some things before they are declared.
+
+function declarations:
+  - hoisted: yes
+  - initial value: the actual function
+  - scope: block
+
+var variables:
+  - hoisted: yes
+  - initial value: undefined
+  - scope: function
+
+let/const variables:
+  - hoisted: no
+  - initial value: uninitialiezed, TDZ (temporal dead zone)
+  - scope: block
+
+function expressions and arrow functions:
+  - depends on if you used var or let/const
+
+- although variables declared with var are hoisted, if you declare a function with var and try to call it before its declaration, it will return undefined. because the initial value of a var before its declaration (in the TDZ) is undefined
+
+Temporal Dead Zone (TDZ) - 
+- region of code starting at the beginning of the scope until the line where a let/const is defined
+- every let and const get their own TDZ
+- Ex: const myName = 'Ricky'
+      if(myName === 'Ricky') {
+        console.log('Ricky is a ${job}')
+        const age = 2037 - 1992
+        console.log(age)
+        const job = 'engineer'
+        console.log(x)
+      }
+
+  - lines 147-149 is the TDZ for 'job'. it's in the same scope as when it's called on line 147, but it wont be initialized until line 150. Prompting a reference error saying that job hasnt been initialized yet
+  - let/const variables are only safe to use after they are defned
+  - line 151 will also prompt a reference error but will say that x is not defined
+
+- TDZ was created to:
+  - make it easier to avoid/catch errors. being able to access variables before declaration is bad practice
+  -  help const variables work. const variables are meant to be immutable. so it shouldnt be undefined and then later (when the code reaches the declaration of the const) reassigned. const variables should only be assigned when execution reaches the declaration
+
+- Best practices because of hoisting:
+  - declare all variables and functions (regardless of which kind) at the top of the code
+  - dont use var

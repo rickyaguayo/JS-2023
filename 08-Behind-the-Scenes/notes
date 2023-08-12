@@ -25,9 +25,9 @@ Javascript -
 - Non-blocking event loop - takes long running tasks, executes them in the background and puts them back in the main thread once they are finished
   - this helps with long running tasks like fetching data
 
-JS Engine - program that executes js code
-
 - most common is V8 Engine. powers google chrome and node.js
+
+JS Engine - program that executes js code
 - JS Engine has 2 parts:
   1. Call stack - where the code is executed using execution contexts
   2. Heap - unstructured memory pool that stores objects that an application needs
@@ -60,8 +60,8 @@ JS Runtime - container including all the things that we need to use JS (Ex: a br
 - In the browser:
   - JS Engine - heart of any JS runtime. with no engine, there is no runtime or JS at all
   - Web APIs - functionalities provided to the engine.
-  - not part of JS, but gets access to the APIs through global window object
-  - Ex: DOM, timers, console.log, etc
+    - not part of JS, but gets access to the APIs through global window object
+    - Ex: DOM, timers, console.log, etc
   - Callback queue - data structure that contains all callback functions that are ready to be executed
   - Ex: event listener
     - when a callback function is called from the callback queue, it is passed to the call stack so that it can be executed. (event loop)
@@ -86,11 +86,11 @@ Execution Context (EC) - environment in which a piece of JS is executed. Stores 
   - scope chain - a reference to all variables located outside of the current function. stored within each EC.
   - this keyword
 - these are generated during creation phase, right before execution
-- arrow functions, however, do not get an argument object or a this keyword. Borrow the arg object and this keyword from its closest regular function parent
+- arrow functions, however, do not get an argument object or a this keyword. Borrows the arg object and this keyword from its closest regular function parent
 
 Call Stack - place where ECs get stacked on top of each other to keep track of where we are in the execution
 - when a new EC is placed on top, the previous is paused. this is because JS only had a single thread for execution and can only run through one EC at a time
-- returns pop the function's EC off the call stack and return to the previously executed EC in the call stack (this helps with callbacks)
+- 'return' pops the function's EC off the call stack and returns to the previously executed EC in the call stack (this helps with callbacks)
 
 Scoping - how our program's variables are organized and accessed by the JS engine
 - where do vairables live? where can we access a certain varibale and where not?
@@ -157,14 +157,27 @@ Temporal Dead Zone (TDZ) -
         console.log(x)
       }
 
-  - lines 147-149 is the TDZ for 'job'. it's in the same scope as when it's called on line 147, but it wont be initialized until line 150. Prompting a reference error saying that job hasnt been initialized yet
+  - lines 153-155 is the TDZ for 'job'. it's in the same scope as when it's called on line 153, but it wont be initialized until line 156. Prompting a reference error saying that job hasnt been initialized yet
   - let/const variables are only safe to use after they are defned
-  - line 151 will also prompt a reference error but will say that x is not defined
+  - line 157 will also prompt a reference error but will say that 'x' is not defined
 
 - TDZ was created to:
   - make it easier to avoid/catch errors. being able to access variables before declaration is bad practice
-  -  help const variables work. const variables are meant to be immutable. so it shouldnt be undefined and then later (when the code reaches the declaration of the const) reassigned. const variables should only be assigned when execution reaches the declaration
+  - help const variables work. const variables are meant to be immutable. so it shouldnt be undefined and then later (when the code reaches the declaration of the const) reassigned. const variables should only be assigned when execution reaches the declaration
 
 - Best practices because of hoisting:
   - declare all variables and functions (regardless of which kind) at the top of the code
   - dont use var
+
+The 'this' keyword:
+- special variable that is created for every EC (aka every function)
+- points to the owner of the function
+- not static. value is assigned when function is called and value depends on how its called
+
+If a function is called using a:
+- method (function attached to an object), 'this' points to the object that is calling the method
+- simple function call, 'this' is undefinted
+- arrow function, 'this' points to the function surrounding the arrow function (arrow functions do not have their own this property)
+- event listener, 'this' points to the DOM element that the handler is attached to
+
+- 'this' will never point to the function in which we are using it nor its variable environment

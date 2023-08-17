@@ -1,6 +1,6 @@
 Javascript -
 
-- High level - developer does not have to worry about resources like memory. JS does it for us unlike languages like C that where you have to manage them manually
+- High level - developer does not have to worry about resources like memory. JS does it for us unlike languages like C that where you have to manage memory manually
 - Garbage-collected - algorithm within JS that automatically removes old, unused objects from the computer memory.
 - Interpreted or just in time compiled - we write easy to read code, but it needs to be compiled to machine code (1s and 0s). happens inside the JS engine
 - Multi-paradigm -
@@ -38,7 +38,7 @@ JS Engine - program that executes js code
   - Compilation - compiles AST into machine code
   - Execution - happens in JS Engine call stack. Is executed immediately after compilation
   - Some engines have a bonus step:
-    - Optimization - machine code is first unoptimized to get the code executed ASAP. then it is optimized, recompiled and reexecuted. Can happen multiple times. Helps engines be very fast.
+    - Optimization - machine code is first unoptimized to get the code executed ASAP. then it is optimized, recompiled and reexecuted. Can happen multiple times. Helps engines with speed.
 
 Compilation vs Interpretation
 
@@ -63,8 +63,8 @@ JS Runtime - container including all the things that we need to use JS (Ex: a br
     - not part of JS, but gets access to the APIs through global window object
     - Ex: DOM, timers, console.log, etc
   - Callback queue - data structure that contains all callback functions that are ready to be executed
-  - Ex: event listener
-    - when a callback function is called from the callback queue, it is passed to the call stack so that it can be executed. (event loop)
+    - Ex: event listener
+      - when a callback function is called from the callback queue, it is passed to the call stack so that it can be executed. (event loop)
 
 Execution Context (EC) - environment in which a piece of JS is executed. Stores all the necessary info for some code to be executed (variable environment, arguments, scope chain)
 - JS code always runs inside an execution context
@@ -83,17 +83,16 @@ Execution Context (EC) - environment in which a piece of JS is executed. Stores 
 
 - Inside an execution context:
   - variable environment - all variable declarations, function declarations and argument objects (contains all arguments for functions)
-  - scope chain - a reference to all variables located outside of the current function. stored within each EC.
-  - this keyword
+  - scope chain - a reference to all variables (that are available for the respective EC) located outside of the current function. stored within each EC.
+  - 'this' keyword
 - these are generated during creation phase, right before execution
-- arrow functions, however, do not get an argument object or a this keyword. Borrows the arg object and this keyword from its closest regular function parent
+- arrow functions, however, do not get an argument object or a 'this' keyword. Borrows the arg object and 'this' keyword from its closest regular function parent
 
 Call Stack - place where ECs get stacked on top of each other to keep track of where we are in the execution
 - when a new EC is placed on top, the previous is paused. this is because JS only had a single thread for execution and can only run through one EC at a time
 - 'return' pops the function's EC off the call stack and returns to the previously executed EC in the call stack (this helps with callbacks)
 
 Scoping - how our program's variables are organized and accessed by the JS engine
-- where do vairables live? where can we access a certain varibale and where not?
 
 - Lexical Scoping - refers to its placement in which it's created. This gives its access to the variables from the parent scope
  
@@ -103,14 +102,14 @@ Scoping - how our program's variables are organized and accessed by the JS engin
   - block scope - variables are accessible only inside of a block of code (anything within curly braces like if statements)
     - only applies to let and const variables. var is function scoped
     - functions are also block scoped (in strict mode)
-  - if 2 variable have the same name, the one that is closest in terms of scope and vaiable lookup will be chosen
+  - if 2 variable have the same name, the one that is closest in terms of scope and variable lookup will be chosen
 
 - Scope chain - every scope always has access to all the variables from all its outer scopes
   - nested functions have access to the parent variables
   - non-nested functions have access to global scope. which in turn give nested functions access to the global scope as well
     - also applies to arguments
   - variable lookup - when child scope look up to parent and global scope for a variable. its not a copy, simply borrowing the variable if its in scope
-  - does not work the other way around or between siblings. scope can only look up, not down to child scopes or sideways
+  - does not work the other way around or between siblings. scope can only look up, not down to child scopes or sideways to a sibling
   - has nothing to do with order in which functions are called
   - one difference between let and const (ES6) and var (pre-ES6) is scoping. let and const are block scoped. var is function scoped
     - if var is declared inside an if statement (or any other block except functions), that var can be used outside of the if block it was created in because var is only function scoped and not block scoped
@@ -157,9 +156,9 @@ Temporal Dead Zone (TDZ) -
         console.log(x)
       }
 
-  - lines 153-155 is the TDZ for 'job'. it's in the same scope as when it's called on line 153, but it wont be initialized until line 156. Prompting a reference error saying that job hasnt been initialized yet
+  - lines 152-154 is the TDZ for 'job'. it's in the same scope as when it's called on line 152, but it wont be initialized until line 156. Prompting a reference error saying that 'job' hasnt been initialized yet
   - let/const variables are only safe to use after they are defned
-  - line 157 will also prompt a reference error but will say that 'x' is not defined
+  - line 156 will also prompt a reference error but will say that 'x' is not defined
 
 - TDZ was created to:
   - make it easier to avoid/catch errors. being able to access variables before declaration is bad practice
@@ -174,10 +173,63 @@ The 'this' keyword:
 - points to the owner of the function
 - not static. value is assigned when function is called and value depends on how its called
 
-If a function is called using a:
+If a function (with 'this') is called using a:
 - method (function attached to an object), 'this' points to the object that is calling the method
 - simple function call, 'this' is undefinted
 - arrow function, 'this' points to the function surrounding the arrow function (arrow functions do not have their own this property)
 - event listener, 'this' points to the DOM element that the handler is attached to
 
 - 'this' will never point to the function in which we are using it nor its variable environment
+
+- do not use arrow functions as methods due to lack of 'this' keywords
+- if a function using 'this' is inside a method and is called via a simple function call, it will return undefined. To remedy this, declare 'self' one level up and set it equal to 'this' (pre-ES6)
+  - const self = this
+  - 'this' will then be equal to the object that owns the method
+
+Arguments keyword
+- appears in function declarations and expressions
+- not included in arrow functions
+- holds object containing all the arguments that were passed for respective function
+
+Primitives (primitive types) - number, string, boolean, undefined, null, symbol, BigInt
+  - stored in call stack via ECs
+Objects (reference types) - object literal, arrays, functions, etc
+  - stored in heap
+
+- when declaring a variable, the variable is stored in the call stack in 3 parts:
+  - identifier: the name of the variable
+  - address: where in memory it is stored
+  - value: value of the variable
+- Ex: let age = 30;
+  - identifier: age
+  - address: 0001 (just as an example)
+  - value: 30
+- the identifier points to the address, not the value. the value is held within the address.
+- if 'age' is changed, it doesnt change the value of the previous address (values held by an address are immutable once defined). a new address will be created with a new value and then age will point to the new address
+  - Ex: let age = 30; // makes new address with value of 30
+        let oldAge = age; // oldAge will point to the address that age is pointing to. (wont create new address)
+        age = 31; // creates new address with new value and point there instead of the old address
+
+- when creating an object, an identifier, address and value is created in the call stack like variables, but the value will be a reference to the heap.
+  - Ex: const me = {
+        name: 'Ricky',
+        age: 30
+      }
+  - In call stack:
+    - identifier: me
+    - address: 0003
+    - value: D30F (reference to memory address in heap)
+  -In heap:
+    - address: D30F
+    - value: {
+        name: 'Ricky',
+        age: 30
+      }
+- works this way because objects may be to large to keep in call stack
+- if you make a copy of the object (const friend = me), it works the same as variables in the call stack, the 'friend' object will point to the same address as 'me' object
+- if something is changed in friend (friend.age = 27), this will also change the 'me' object because its going to find the object in the heap and change it. since the 'me' object is still pointing to that object in the heap,     me.age will also be 27
+- although const is being used to define the object and const is immutable, the values within the object can still be changed. this is because the value of the object in the call stack is a reference to the heap. so that value isnt being changed, just the values inside the object, inside the heap
+
+Ways around two objects pointing to the same reference:
+Object.assign() - combines two objects by making a new object (and reference to the heap) inside the call stack
+  - this makes a shallow copy (not a deep clone). meaning if there is an object inside another object, the nested object will remain the same in memory. a deep clone copies everything

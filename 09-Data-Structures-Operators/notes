@@ -3,8 +3,8 @@ Destructuring Arrays
 Ex: const arr = [2, 3, 4]
 const [x, y, z] = arr; // returns 2 3 4
 - doesnt affect the original array in any way
-- can take only part of the array if necessary. will take from array in order
 
+- can take only part of the array if necessary. will take from array in order
 - if you want certain elements, skip anything you dont needed
 Ex: const [x, , z] = arr; // returns 2 4
 
@@ -21,6 +21,7 @@ console.log(k, l, m); //returns 8 9 1
 Destructuring Objects
 - way of turning objects into variables
 - order doesnt matter when destructuring objects
+- names in destructuring must match name in object
 Ex: const example = {
   ricky: 'aguayo',
   bibi: 'aguayo',
@@ -45,3 +46,71 @@ Ex: {scott = [], monica: buttergut = []} = example
 - can bring out nested objects
 const {puppies: {first} } = example
 - returns 'tommy'
+
+Spread Operator
+- used to bring in ALL values from an iterable source (and objects as of ES2018)
+- Iterable - arrays, strings, maps, sets. NOT objects
+- can only be used when building a new array or passing values into a function
+Ex: const arr1 = [1, 2, 3]
+const arr2 = [...arr1, 4, 5] // returns [1, 2, 3, 4, 5]
+- can be used to pull elements out of an array individually
+Ex: console.log(...arr2) //  returns 1, 2, 3, 4, 5
+- this doesnt manipulate original array. this adds onto a new/existing array
+- unlike destructuring, the spread operator does not create new values
+  
+String Ex: const str = 'Ricky'
+  const letters = [...str] // returns ['R', 'i', 'c', 'k', 'y']
+
+- create a shallow copy of an array:
+Ex: const copyArr = [...arr1] // returns copy of arr1 under new variable name
+
+- merge multiple arrays:
+Ex: const mergedArr = [...arr1, ...arr2] // returns one array with all the values from arr1 and arr2
+
+- With objects, the process is the same but with curly braces
+Ex: const newObj = {...example} // returns everything in the example object and makes a copy object named newObj
+
+Rest 
+- opposite of spread operator. collects any unused variables from a destructuring assignment
+- same syntax as a spread operator but is on the left side of the assignment operator. Spread will always me on the right
+Ex: const [a, b, ...others] = [1, 2, 3, 4, 5]
+  - returns 1, 2, [3, 4, 5]
+
+- both spread and rest can be used at the same time
+- rest element used must be the last element in array, otherwise and error is thrown
+- will not account for skipped elements
+- can only ever be one rest instance per destructuring assignment
+- can also be used in paramaters for functions
+
+Short Circuiting with logical operators (&& and ||)
+- ignores and does not evaluate the rest of values after it finds what its looking for
+- be used with any data type
+- return any data type
+
+- OR (||): 
+  - finds and returns first truthy value.
+  Ex: console.log(3 || 'ricky') //returns 3
+      console.log('' || 'ricky') //returns 'ricky'
+  - If neither values are truthy, js will return the last value
+  Ex: console.log(undefined || null) // returns null
+  - Can be used in place of ternary operators (to set default values)
+  - keep in mind that 0 is a falsy value. so it will be skipped over even when 0 may be needed
+
+- AND (&&)
+  - finds and returns first falsy value
+  Ex: console.log(0 && 'Ricky') // returns 0 
+  - If neither values are falsy, js will return the last value
+  Ex: console.log('Ricky' && 11) // returns 11
+  - Can be used in place of if statements. (to execute code if first operand is true)
+
+Nullish Coalescing (??)
+- Nullish values: null, undefined
+- works like || but ?? will only short circuit when it finds a nullish value
+- 0 and '' will not short circuit when a ?? is present
+- this fixes having a 0 as a value when using ||
+
+Logical assignment operators
+- shorthand for short Circuiting
+OR - rest1.numGuests ||= 10
+NULLISH - rest1.numGuests ??= 10 //helps if value needed is 0 or ''
+AND - rest1.numGuests &&= 10

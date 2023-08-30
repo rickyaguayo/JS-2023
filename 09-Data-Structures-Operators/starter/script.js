@@ -255,3 +255,61 @@ rest2.owner &&= 'Anonymous';
 
 // console.log(rest1);
 // console.log(rest2);
+
+//////////////FOR-OF LOOPS/////////////
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// console.log(menu);
+// for (const item of menu) {
+//   console.log(item);
+// }
+
+// for (const item of menu.entries()) {
+//   console.log(`${item[0] + 1}: ${item[1]}`);
+// }
+
+// for (const [i, j] of menu.entries()) {
+//   console.log(`${i + 1}: ${j}`);
+// }
+
+///////////ENHANCED OBJECT LITERALS///////////
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant.openingHours?.mon?.open);
+
+//with nullish coalescing
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, we open at ${open}`);
+// }
+
+//checking if methods exist
+// console.log(restaurant.order?.(1, 0) ?? 'Method doesnt exist');
+// console.log(restaurant.orderRisotto?.(1, 0) ?? 'Method doesnt exist');
+
+//checking if array exist
+// const users = [{ name: 'ricky', age: 31 }];
+const users = [];
+// console.log(users[0]?.name ?? 'User array empty');
+
+///////////LOOPING THROUGH OBJECT KEYS, VALUES AND ENTRIES/////////
+//KEYS
+const keys = Object.keys(restaurant.openingHours);
+// console.log(keys);
+let openStr = `we are open ${keys.length} days: `;
+
+for (const day of keys) {
+  openStr += `${day}, `;
+}
+// console.log(openStr);
+
+//VALUES
+const values = Object.values(restaurant.openingHours);
+// console.log(values);
+
+//ENTRIES (entire object)
+const entries = Object.entries(restaurant.openingHours);
+// console.log(entries);
+
+// for (const [key, { open, close }] of entries) {
+//   console.log(`On ${key}, we open at ${open} and close at ${close}`);
+// }

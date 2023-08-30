@@ -114,3 +114,61 @@ Logical assignment operators
 OR - rest1.numGuests ||= 10
 NULLISH - rest1.numGuests ??= 10 //helps if value needed is 0 or ''
 AND - rest1.numGuests &&= 10
+
+For of loop
+- used to iterate through a list and returns individual item from array
+Ex: for(const item of menu){
+  console.log(item) //returns each item in array
+}
+- to extract index from a for of loop, .entries() must be used on array
+- for(const item of menu.entries()) console.log(item) // returns [index, value]
+- can be used with destructuring
+
+Enhanced Object Literals
+1. an object outside another can be used inside the other by just writing the object name
+Ex: const obj1 = {
+  name: 'ricky'
+}
+
+const obj2 = {
+  age: 31,
+  obj1, //this brings in name: 'ricky'
+  favColor: 'blue'
+}
+
+2. can omit function keyword when writing methods
+Ex: const obj1 = {
+  printName: function(name) {
+    console.log(name)
+  },
+
+  printName2(name) {
+    console.log(name)
+  }
+}
+- both work the same
+
+3. can compute property names without writing them out
+const weekend = ['sat', 'sun']
+const obj1  = {
+  [weekend[0]]: 'saturday',
+  [weekend[1]]: 'sunday',
+}'
+
+Optional Chaining
+- returns undefined (instead of throwing error) if a part of an object comes back undefined
+- works with nullish values
+Ex: restaurant.openingHours.mon.open // returns error because mon isnt in object therefore there is no open
+    restaurant.openingHours.mon?.open // returns undefined because of the '?.'
+    - this is saying that if this doesnt exist, return undefined, not an error
+- can have multiple optional chaining
+- can check if methods exist
+
+Object.keys()
+- returns keys from an object as an array
+
+Object.values()
+- returns values from an object as an array
+
+Object.entries()
+- returns entire object as arrays in an array. each key/value pair is an array

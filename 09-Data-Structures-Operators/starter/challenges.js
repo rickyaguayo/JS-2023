@@ -1,15 +1,4 @@
 'use strict';
-///////////////////////////////////////
-// Coding Challenge #1
-
-/* 
-We're building a football betting app (soccer for my American friends 😅)!
-
-Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
-
-GOOD LUCK 😀
-*/
-
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -51,6 +40,54 @@ const game = {
   },
 };
 
+///////////////////////////////////////
+// Coding Challenge #2
+
+//1. Loop over the game.scored array and print each player name to the console, along with the goal number (Example: "Goal 1: Lewandowski")
+// for (const [goal, player] of game.scored.entries()) {
+//   console.log(`Goal ${goal + 1}: ${player}`);
+// }
+
+//2. Use a loop to calculate the average odd and log it to the console (We already studied how to calculate averages, you can go check if you don't remember)
+let sum = 0;
+let odds = Object.values(game.odds);
+
+for (const odd of odds) {
+  sum += odd;
+}
+// console.log(sum / odds.length);
+
+// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+//       Odd of victory Bayern Munich: 1.33
+//       Odd of draw: 3.25
+//       Odd of victory Borrussia Dortmund: 6.5
+// Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
+let teams = Object.values(game.odds);
+console.log(typeof teams);
+
+for (const team in teams) {
+  console.log(`Odd of victory ${game.team1}: ${teams[team]} `);
+  // console.log(team);
+}
+
+// BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
+//       {
+//         Gnarby: 1,
+//         Hummels: 1,
+//         Lewandowski: 2
+//       }
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+We're building a football betting app (soccer for my American friends 😅)!
+
+Suppose we get data from a web service about a certain game (below). In this challenge we're gonna work with the data. So here are your tasks:
+
+GOOD LUCK 😀
+*/
+
 //1. Create one player array for each team (variables 'players1' and 'players2')
 const [players1, players2] = game.players;
 // console.log(players1, players2);
@@ -84,17 +121,9 @@ const printGoals = function (...playerName) {
 };
 
 // printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-printGoals(...game.scored);
+// printGoals(...game.scored);
 
 //7. The team with the lower odd is more likely to win. Print to the console which team is more likely to win, WITHOUT using an if/else statement or the ternary operator.
 
-const T1 = function () {
-  console.log('Team1 wins');
-};
-
-const T2 = function () {
-  console.log('Team2 wins');
-};
-
-team1 < team2 && T1();
-team1 < team2 || T2();
+// team1 < team2 && console.log('Team1 wins');
+// team1 < team2 || console.log('Team2 wins');

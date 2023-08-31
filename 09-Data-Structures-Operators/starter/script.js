@@ -272,6 +272,24 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 // }
 
 ///////////ENHANCED OBJECT LITERALS///////////
+const obj1 = {
+  name: 'ricky',
+};
+
+const obj2 = {
+  age: 31,
+  favColor: 'blue',
+  obj1,
+
+  printName(name) {
+    console.log(name);
+  },
+};
+
+// console.log(obj2);
+// obj2.printName('ricky');
+
+////////////OPTIONAL CHAINING////////////////
 // console.log(restaurant.openingHours.mon?.open);
 // console.log(restaurant.openingHours?.mon?.open);
 
@@ -294,7 +312,7 @@ const users = [];
 ///////////LOOPING THROUGH OBJECT KEYS, VALUES AND ENTRIES/////////
 //KEYS
 const keys = Object.keys(restaurant.openingHours);
-// console.log(keys);
+// console.log(typeof keys);
 let openStr = `we are open ${keys.length} days: `;
 
 for (const day of keys) {
@@ -304,10 +322,11 @@ for (const day of keys) {
 
 //VALUES
 const values = Object.values(restaurant.openingHours);
-// console.log(values);
+// console.log(typeof values);
 
 //ENTRIES (entire object)
 const entries = Object.entries(restaurant.openingHours);
+// console.log(typeof entries);
 // console.log(entries);
 
 // for (const [key, { open, close }] of entries) {

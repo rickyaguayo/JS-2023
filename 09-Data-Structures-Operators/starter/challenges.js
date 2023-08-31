@@ -62,12 +62,15 @@ for (const odd of odds) {
 //       Odd of draw: 3.25
 //       Odd of victory Borrussia Dortmund: 6.5
 // Get the team names directly from the game object, don't hardcode them (except for "draw"). HINT: Note how the odds and the game objects have the same property names 😉
-let teams = Object.values(game.odds);
-console.log(typeof teams);
+// let teams = Object.keys(game.odds);
+let teams = Object.entries(game.odds);
+// console.log(teams);
 
-for (const team in teams) {
-  console.log(`Odd of victory ${game.team1}: ${teams[team]} `);
-  // console.log(team);
+for (const [key, value] of teams) {
+  const teamStr = key === 'x' ? 'draw' : `victory ${game[key]}`;
+  console.log(`Odd of ${teamStr}: ${value}`);
+  // console.log(key);
+  // console.log(value);
 }
 
 // BONUS: Create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value. In this game, it will look like this:
@@ -76,6 +79,21 @@ for (const team in teams) {
 //         Hummels: 1,
 //         Lewandowski: 2
 //       }
+
+const scorers = {};
+let players = game.scored;
+// console.log(game.scored.entries());
+
+for (const player of players) {
+  scorers[player] = scorers[player] ? scorers[player] + 1 : 1;
+}
+
+// for (const [i, player] of players.entries()) {
+//   console.log(i);
+//   console.log(player);
+// }
+
+console.log(scorers);
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -105,9 +123,9 @@ const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 // console.log(players1Final);
 
 //5. Based on the game.odds object, create one variable for each odd (called 'team1', 'draw' and 'team2')
-const {
-  odds: { team1, x: draw, team2 },
-} = game;
+// const {
+//   odds: { team1, x: draw, team2 },
+// } = game;
 // console.log(team1, draw, team2);
 
 //6. Write a function ('printGoals') that receives an arbitrary number of player names (NOT an array) and prints each of them to the console, along with the number of goals that were scored in total (number of player names passed in)

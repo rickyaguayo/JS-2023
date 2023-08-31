@@ -84,8 +84,8 @@ Ex: const [a, b, ...others] = [1, 2, 3, 4, 5]
 
 Short Circuiting with logical operators (&& and ||)
 - ignores and does not evaluate the rest of values after it finds what its looking for
-- be used with any data type
-- return any data type
+- can be used with any data type
+- can return any data type
 
 - OR (||): 
   - finds and returns first truthy value.
@@ -110,7 +110,7 @@ Nullish Coalescing (??)
 - this fixes having a 0 as a value when using ||
 
 Logical assignment operators
-- shorthand for short Circuiting
+- shorthand for short circuiting
 OR - rest1.numGuests ||= 10
 NULLISH - rest1.numGuests ??= 10 //helps if value needed is 0 or ''
 AND - rest1.numGuests &&= 10
@@ -132,7 +132,7 @@ Ex: const obj1 = {
 
 const obj2 = {
   age: 31,
-  obj1, //this brings in name: 'ricky'
+  obj1, //this brings in obj1
   favColor: 'blue'
 }
 
@@ -165,10 +165,10 @@ Ex: restaurant.openingHours.mon.open // returns error because mon isnt in object
 - can check if methods exist
 
 Object.keys()
-- returns keys from an object as an array
+- returns keys from an object as an object
 
 Object.values()
-- returns values from an object as an array
+- returns values from an object as an object
 
 Object.entries()
 - returns entire object as arrays in an array. each key/value pair is an array

@@ -251,7 +251,6 @@ rest2.numGuests ??= 10;
 //with &&
 // rest1.owner = rest1.owner && 'Anonymous'; // this will add the owner property as undefined
 rest1.owner &&= 'Anonymous'; // this will not create owner property
-rest2.owner &&= 'Anonymous';
 
 // console.log(rest1);
 // console.log(rest2);
@@ -332,3 +331,95 @@ const entries = Object.entries(restaurant.openingHours);
 // for (const [key, { open, close }] of entries) {
 //   console.log(`On ${key}, we open at ${open} and close at ${close}`);
 // }
+
+///////////////////SETS AND MAPS///////////////////
+//Sets
+const orderSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+
+// console.log(orderSet); //returns {'Pasta', 'Pizza', 'Risotto'}
+// console.log(new Set('Ricky')); // returns {'R', 'i', 'c', 'k', 'y'}
+
+// console.log(orderSet.size); // returns 3
+// console.log(orderSet.has('Pizza'));
+// console.log(orderSet.has('Bread'));
+// orderSet.add('Garlic Bread');
+// orderSet.delete('Risotto');
+// // orderSet.clear();
+// console.log(orderSet);
+
+// for (const order of orderSet) console.log(order);
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Waiter', 'Chef'];
+// const staffSet = new Set(staff); // this creates a set
+const staffSet = [...new Set(staff)]; // this creates an array
+// console.log(staffSet);
+
+// console.log(new Set('rickyaguayo').size);
+
+//MAPS
+const rest = new Map();
+rest.set('name', 'Classico Mexicano');
+rest.set(1, 'Chihuahua, MX');
+rest.set(2, 'Guadalajara, MX');
+
+rest
+  .set('staff', ['Waiter', 'Chef', 'Waiter', 'Manager', 'Waiter', 'Chef'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'Open!')
+  .set(false, 'Closed.');
+
+// console.log(rest.get(true));
+
+const time = 21;
+// console.log(rest.get(time > rest.get('open') && time < rest.get('closed')));
+
+// console.log(rest.has('staff'));
+// console.log(rest.delete(2));
+// console.log(rest.size);
+// console.log(rest.clear());
+
+// console.log(rest.set([1, 2], 'Test')); // this will work, but you wont be able to retrieve 'Test'. the key should be a variable
+// console.log(rest.get[1, 2]) // this will not return 'Test'
+// const arr1 = [1, 2];
+// console.log(rest.set(arr1, 'Test'));
+// console.log(rest.get(arr1));
+
+// rest.set(document.querySelector('h1'), 'Heading');
+// console.log(rest);
+
+const question = new Map([
+  ['question', 'What is the best programming language?'],
+  [1, 'C#'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true, 'Correct!'],
+  [false, 'Try again!'],
+]);
+
+console.log(question);
+
+//converting objects to maps
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+
+//quiz example
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = 3;
+// console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
+
+// console.log([...question]); // turns map into array

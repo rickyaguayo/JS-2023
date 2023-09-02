@@ -1,4 +1,4 @@
-Destructuring Arrays
+Destructuring Arrays - 
 - a way of turning an array into individual variables
 Ex: const arr = [2, 3, 4]
 const [x, y, z] = arr; // returns 2 3 4
@@ -18,7 +18,7 @@ Ex: const [k = 1, l = 1, m = 1] = [8, 9];
 console.log(k, l, m); //returns 8 9 1
 - helpful for when you arent sure the length of the array 
 
-Destructuring Objects
+Destructuring Objects - 
 - way of turning objects into variables
 - order doesnt matter when destructuring objects
 - names in destructuring must match name in object
@@ -47,7 +47,7 @@ Ex: {scott = [], monica: buttergut = []} = example
 const {puppies: {first} } = example
 - returns 'tommy'
 
-Spread Operator
+Spread Operator - 
 - used to bring in ALL values from an iterable source (and objects as of ES2018)
 - Iterable - arrays, strings, maps, sets. NOT objects
 - can only be used when building a new array or passing values into a function
@@ -70,9 +70,9 @@ Ex: const mergedArr = [...arr1, ...arr2] // returns one array with all the value
 - With objects, the process is the same but with curly braces
 Ex: const newObj = {...example} // returns everything in the example object and makes a copy object named newObj
 
-Rest 
+Rest  - 
 - opposite of spread operator. collects any unused variables from a destructuring assignment
-- same syntax as a spread operator but is on the left side of the assignment operator. Spread will always me on the right
+- same syntax as a spread operator but is on the left side of the assignment operator. Spread will always be on the right
 Ex: const [a, b, ...others] = [1, 2, 3, 4, 5]
   - returns 1, 2, [3, 4, 5]
 
@@ -82,12 +82,12 @@ Ex: const [a, b, ...others] = [1, 2, 3, 4, 5]
 - can only ever be one rest instance per destructuring assignment
 - can also be used in paramaters for functions
 
-Short Circuiting with logical operators (&& and ||)
+Short Circuiting with logical operators (&& and ||) - 
 - ignores and does not evaluate the rest of values after it finds what its looking for
 - can be used with any data type
 - can return any data type
 
-- OR (||): 
+- OR (||) - 
   - finds and returns first truthy value.
   Ex: console.log(3 || 'ricky') //returns 3
       console.log('' || 'ricky') //returns 'ricky'
@@ -96,26 +96,26 @@ Short Circuiting with logical operators (&& and ||)
   - Can be used in place of ternary operators (to set default values)
   - keep in mind that 0 is a falsy value. so it will be skipped over even when 0 may be needed
 
-- AND (&&)
+- AND (&&) - 
   - finds and returns first falsy value
   Ex: console.log(0 && 'Ricky') // returns 0 
   - If neither values are falsy, js will return the last value
   Ex: console.log('Ricky' && 11) // returns 11
   - Can be used in place of if statements. (to execute code if first operand is true)
 
-Nullish Coalescing (??)
+Nullish Coalescing (??) - 
 - Nullish values: null, undefined
 - works like || but ?? will only short circuit when it finds a nullish value
 - 0 and '' will not short circuit when a ?? is present
 - this fixes having a 0 as a value when using ||
 
-Logical assignment operators
+Logical assignment operators - 
 - shorthand for short circuiting
 OR - rest1.numGuests ||= 10
 NULLISH - rest1.numGuests ??= 10 //helps if value needed is 0 or ''
 AND - rest1.numGuests &&= 10
 
-For of loop
+For of loop - 
 - used to iterate through a list and returns individual item from array
 Ex: for(const item of menu){
   console.log(item) //returns each item in array
@@ -124,7 +124,7 @@ Ex: for(const item of menu){
 - for(const item of menu.entries()) console.log(item) // returns [index, value]
 - can be used with destructuring
 
-Enhanced Object Literals
+Enhanced Object Literals - 
 1. an object outside another can be used inside the other by just writing the object name
 Ex: const obj1 = {
   name: 'ricky'
@@ -155,7 +155,7 @@ const obj1  = {
   [weekend[1]]: 'sunday',
 }'
 
-Optional Chaining
+Optional Chaining - 
 - returns undefined (instead of throwing error) if a part of an object comes back undefined
 - works with nullish values
 Ex: restaurant.openingHours.mon.open // returns error because mon isnt in object therefore there is no open
@@ -165,10 +165,78 @@ Ex: restaurant.openingHours.mon.open // returns error because mon isnt in object
 - can check if methods exist
 
 Object.keys()
-- returns keys from an object as an object
+- returns keys from an object as an arry
 
 Object.values()
-- returns values from an object as an object
+- returns values from an object as an arry
 
 Object.entries()
 - returns entire object as arrays in an array. each key/value pair is an array
+
+Sets - 
+- collection of unique values
+- iterable (can be used in for of loop)
+- iterable must be passed in when creating a set. Ex: const newSet = new Set([])
+- can never have any duplicates. if there are duplicates, the set will throw the duplicates away
+- can hold any data structure
+- like arrays, but sets have unique values and order is irrelevant
+
+- .size - returns number of unique values. (like .length for arrays)
+- .has() - returns boolean if value is in the set. (like .includes for arrays)
+- .add() - adds value to set
+- .delete() - deletes value from set
+- .clear() - clears entire set
+
+- sets do not have indexes or order
+- data cannot be retrieved from a set. sets are made to see if a value is present
+- if data needs to be retrieved, use an array
+- sets can be turned into arrays using spread. 
+Ex: const staffSet = [...new Set(staff)];
+
+- not really used to replace arrays. used to compliment arrays when unique values are needed
+
+Maps - 
+- data structure where we can map values to keys
+- like objects. both have key/value pairs.
+- maps can have any data type as a key (including arrays and objects)
+
+- .set(key, value) - adds to map (like .add() for sets)
+  - returns updated map
+  - this allows to chain set methods
+- .get(key) - returns value of passed in key
+- .has(key) - returns boolean
+- .delete(key) - deletes both key and value
+- .clear() - clears entire map
+
+- another way of populating a map is by passing in key/value pairs as arrays inside a containing array. this eliminates the need of the .set() method
+- objects can be converted to maps using Object.entries(object)
+- maps also have access to the .entries(), .keys() and .values() methods
+
+Arrays vs Sets
+- use an array or set when you only need a value and no descriptor (key)
+
+- Arrays:
+  - use when you need ordered list of values (can contain duplicates)
+  - use when you need to manipulate data
+
+- Sets:
+  - use when you need to work with unique values
+  - use when high performance is really important
+  - use to remove duplicates from arrays
+
+Objects vs Maps
+- use when a key/value pair is needed
+
+Objects:
+- more traditional key/value store
+- easier to write and access data with [] and .
+- use when you need to include functions(mehtods)
+- use when working with JSON (can convert to map)
+
+Maps:
+- better performance
+- keys can have any data type
+- easy to iterate
+- easy to compute size
+- use when you simply need to map keys to values
+- use when you need keys that are not strings

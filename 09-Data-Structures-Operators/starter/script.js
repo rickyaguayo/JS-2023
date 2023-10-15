@@ -245,12 +245,12 @@ const rest2 = {
 // rest2.numGuests ||= 10;
 
 //with ??
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
+// rest1.numGuests ??= 10;
+// rest2.numGuests ??= 10;
 
 //with &&
-// rest1.owner = rest1.owner && 'Anonymous'; // this will add the owner property as undefined
-rest1.owner &&= 'Anonymous'; // this will not create owner property
+rest1.owner = rest1.owner && 'Anonymous'; // this will add the owner property as undefined
+// rest1.owner &&= 'Anonymous'; // this will not create owner property
 
 // console.log(rest1);
 // console.log(rest2);
@@ -263,6 +263,7 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 // }
 
 // for (const item of menu.entries()) {
+//   console.log(menu);
 //   console.log(`${item[0] + 1}: ${item[1]}`);
 // }
 
@@ -405,21 +406,155 @@ const question = new Map([
   [false, 'Try again!'],
 ]);
 
-console.log(question);
+// console.log(question);
 
 //converting objects to maps
 const hoursMap = new Map(Object.entries(restaurant.openingHours));
-console.log(hoursMap);
+// console.log(hoursMap);
 
 //quiz example
-console.log(question.get('question'));
-for (const [key, value] of question) {
-  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
-}
+// console.log(question.get('question'));
+// for (const [key, value] of question) {
+//   if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+// }
 
 const answer = 3;
 // console.log(answer);
 
-console.log(question.get(question.get('correct') === answer));
+// console.log(question.get(question.get('correct') === answer));
 
 // console.log([...question]); // turns map into array
+
+//STRINGS
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+// console.log(plane[0]);
+// console.log('B737'[0]);
+
+// console.log(airline.length);
+// console.log('B737'.length);
+
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.indexOf('Portugal')); //case sensitive
+
+// console.log(airline.slice(4));
+// console.log(airline.slice(4, 7));
+
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+// console.log(airline.slice(-2));
+// console.log(airline.slice(1, -2));
+
+const checkMidSeat = function (seat) {
+  console.log(
+    seat.slice(-1) === 'B' || seat.slice(-1) === 'E'
+      ? 'Middle seat'
+      : 'Not a middle seat'
+  );
+  // console.log(seat.slice(-1));
+};
+
+// checkMidSeat('11B');
+// checkMidSeat('23C');
+// checkMidSeat('3E');
+
+// console.log(airline.toLowerCase());
+// console.log(airline.toUpperCase());
+
+const passenger = 'rICky';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+// console.log(passengerCorrect);
+
+const correctName = name => {
+  const nameLower = name.toLowerCase();
+  const nameCorrect = nameLower[0].toUpperCase() + nameLower.slice(1);
+  return nameCorrect;
+};
+// console.log(correctName('riCARdo'));
+
+const email = '  rIcKy@RIckY.com  \n';
+// const lowerEmail = email.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+
+const shortcutEmail = email.toLowerCase().trim();
+// console.log(shortcutEmail);
+
+const priceGB = '288,98%';
+const priceUS = priceGB.replace('%', '$').replace(',', '.');
+// console.log(priceUS);
+
+const announcement = 'Everyone gets some money. There will be money for all!';
+// console.log(announcement.replace('money', 'booty'));
+// console.log(announcement.replace(/money/g, 'booty')); //regex
+// console.log(announcement.replaceAll('money', 'booty'));
+
+const plane2 = 'Airbus A320neo';
+// console.log(plane2.includes('A320'));
+// console.log(plane2.includes('Boeing'));
+// console.log(plane2.startsWith('Airb'));
+
+// if (plane2.startsWith('Airbus') && plane2.endsWith('neo'))
+//   console.log('Airbus Family');
+
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes('gun') || baggage.includes('knife')) {
+    console.log('not getting on board son');
+  } else {
+    console.log('welcome aboard son');
+  }
+};
+
+// checkBaggage('laptop, Food, pocket Knife');
+// checkBaggage('socks, camera');
+// checkBaggage('SNACKS, GUN');
+
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Ricky Aguayo'.split(' '));
+
+const [first, last] = 'Ricky Aguayo'.split(' ');
+console.log(first, last);
+
+const newName = ['Mr.', first, last.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('ricky aguayo');
+
+const message = 'Please go to gate 11!';
+console.log(message.padStart(30, '+').padEnd(35, '+'));
+// console.log(message.padEnd(35, '+'));
+
+const maskCC = function (num) {
+  const str = num + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, 'x');
+};
+
+console.log(maskCC(1123487253485723904));
+console.log(maskCC('7518734812734019283'));
+
+const message2 = 'Bad weather, all departures delayed. ';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'✈️'.repeat(n)}`);
+};
+
+planesInLine(2);
+planesInLine(6);
+planesInLine(1);

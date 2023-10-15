@@ -165,10 +165,10 @@ Ex: restaurant.openingHours.mon.open // returns error because mon isnt in object
 - can check if methods exist
 
 Object.keys()
-- returns keys from an object as an arry
+- returns keys from an object as an array
 
 Object.values()
-- returns values from an object as an arry
+- returns values from an object as an array
 
 Object.entries()
 - returns entire object as arrays in an array. each key/value pair is an array
@@ -230,7 +230,7 @@ Objects vs Maps
 Objects:
 - more traditional key/value store
 - easier to write and access data with [] and .
-- use when you need to include functions(mehtods)
+- use when you need to include functions(methods)
 - use when working with JSON (can convert to map)
 
 Maps:
@@ -240,3 +240,43 @@ Maps:
 - easy to compute size
 - use when you simply need to map keys to values
 - use when you need keys that are not strings
+
+//////////////////STRINGS////////////////////
+
+String Methods:
+- methods are usually reserved for arrays and objects, but in js strings can use them too
+  - this is because behind the scenes, js will transform the string into a string object when methods are used
+  - new String('ricky') <-- string object
+  - the string object is then converted back to a string once the operation is done
+- all string methods are case sensitive
+
+- .indexOf(value) - finds first occurence of value in string
+- .lastIndexOf(value) - finds last occurence of value in string
+- .slice(x, y)
+  - x - index of where extraction for substring begins
+  - y - index of where extractions for substring ends
+  - can use indexOf and lastIndexOf combined with slice to find certain words
+    - airline.slice(0, airline.indexOf(' '))
+  - using negative numbers starts slicing from the end
+    - airline.slice(-2) //returns 'al'
+- .toLowerCase() - converts string to all lower case letters
+- .toUpperCase() - converts string to all upper case letters
+- .trim() - remmoves first and last white space from string
+- .replace(x, y) - 
+  - x - letter or term that will be replaced
+  - y - letter or term that will be used to replace x
+  - this only works on the first instance
+- .replaceAll(x, y) - same as .replace() but replaces all instances
+  - can also use regex to achieve the same
+  - Ex: announcement.replace(/money/g, 'booty')
+- .includes(value) - checks to see if value is in string. returns boolean
+- .startsWith(value) - checks to see if string starts with value. returns boolean
+- .includes(value) - checks to see if string ends with value. returns boolean
+- .split(divider) - splits up string into an array based on divider
+- .join(divider) - joins an array into a string with divider
+- .padStart(x, y) - adds characters to beginning of string to fulfill total length
+- .padEnd(x, y) - adds characters to end of string to fulfill total length
+  - x - total length of string
+  - y - what character should be used to pad
+  - if you dont specify a character, it will default to spaces
+- .repeat(x) - repeats string x number of times
